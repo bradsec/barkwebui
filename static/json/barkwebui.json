@@ -1,0 +1,26 @@
+{
+    "a466c58d256e471b8a65d5b1d7d6a8f6": {
+        "textInput": "This is my voice. There are many like it, but this one is mine. It is my vocal instrument. I must master it as I must master my performance. Without me, my voice is silent. Without my voice, I am unheard. I must speak with clarity. I must captivate the audience better than anyone else.",
+        "voice": "announcer",
+        "textTemp": 0.6,
+        "waveformTemp": 0.6,
+        "speed": 1.0,
+        "pitch": -6,
+        "reduceNoise": false,
+        "removeSilence": false,
+        "outputFile": "a466c58d256e471b8a65d5b1d7d6a8f6.wav",
+        "generationTime": 30.81
+    },
+    "77413c6bdd2042239138aa16ffe0ba7d": {
+        "textInput": "This is my voice. There are many like it, but this one is mine. It is my vocal instrument. I must master it as I must master my performance. Without me, my voice is silent. Without my voice, I am unheard. I must speak with clarity. I must captivate the audience better than anyone else.",
+        "voice": "v2/en_speaker_3",
+        "textTemp": 0.7,
+        "waveformTemp": 0.7,
+        "speed": 1.0,
+        "pitch": 0,
+        "reduceNoise": false,
+        "removeSilence": false,
+        "outputFile": "77413c6bdd2042239138aa16ffe0ba7d.wav",
+        "generationTime": 42.19
+    }
+}

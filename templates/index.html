@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Bark AI Voice Web UI" />
+    <meta name="author" content="BRADSEC" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="theme-color" content="#202020" />
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/barkwebui.css') }}" />
+    <title>Bark Web UI</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+      <div class="branding"><a href="https://github.com/bradsec/barkwebui">Bark <span>Web UI</span></a></div>
+      <div id="theme-switcher">
+        <svg id="sun-icon" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <circle class="sun" cx="12" cy="12" r="6" fill="currentColor" />
+          <g class="sun-beams" stroke="currentColor">
+            <line x1="12" y1="1" x2="12" y2="3" />
+            <line x1="12" y1="21" x2="12" y2="23" />
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+            <line x1="1" y1="12" x2="3" y2="12" />
+            <line x1="21" y1="12" x2="23" y2="12" />
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+          </g>
+        </svg>
+        
+        <svg id="moon-icon" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <mask id="moon-mask" class="moon">
+            <rect x="0" y="0" width="100%" height="100%" fill="currentColor" />
+            <circle cx="12" cy="10" r="6" fill="white" />
+          </mask>
+          <circle class="moon" cx="12" cy="12" r="6" fill="currentColor" />
+        </svg>  
+      </div>
+    </header>
+      <main>
+        <form id="generator-form">
+          <textarea name="text-input" id="text-input" rows="10" cols="50"></textarea>
+          <div class="select-container">
+            <select name="voice" id="voice">
+              <option value="announcer" selected>Announcer</option>
+            </select>
+          </div>
+          <span class="more-info"><p class="small"><strong>Bark Supported Languages:</strong> English (en), German (de), Spanish (es), French (fr), Hindi (hi), Italian (it), Japanese (ja), Korean (ko), Polish (pl), Portuguese (pt), Russian (ru), Turkish (tr), Chinese, simplified (zh)</p></span><span class="more-info-link">Supported Languages</span>
+          <div class="select-group">
+          <div class="select-container">
+            <select name="text-temp" id="text-temp">
+            </select>
+          </div>
+          <div class="select-container">
+            <select name="waveform-temp" id="waveform-temp">
+            </select>
+          </div>
+        </div>
+          <span class="more-info"><p class="small"><strong>Text Temperature:</strong> This parameter affects how the model generates speech from text. A higher text temperature value makes the model's output more random, while a lower text temperature value makes the model's output more deterministic. In other words, with a high text temperature, the model is more likely to generate unusual or unexpected speech from a given text prompt. On the other hand, with a low text temperature, the model is more likely to stick closely to the most probable output.</p><p class="small"><strong>Waveform Temperature:</strong> This parameter affects how the model generates the final audio waveform. A higher waveform temperature value introduces more randomness into the audio output, which might result in more unusual sounds or voice modulations. A lower waveform temperature, on the other hand, makes the audio output more predictable and consistent.</p></span><span class="more-info-link">Text and Waveform Temperature</span>
+          <div class="select-group">
+          <div class="select-container">
+            <select name="speed" id="speed">
+              <option value="1.0" selected>Normal Speed</option>
+            </select>
+          </div>   
+          <div class="select-container">
+            <select name="pitch" id="pitch">
+              <option value="0" selected>Normal Pitch</option>
+            </select>
+          </div>
+        </div>
+          <span class="more-info"><p class="small"><strong>Adjusting audio speed and pitch:</strong> Changes to speed and pitch may cause a fair amount of echo and reverb in the output audio. Running the audio through a third-party AI audio tool may help remove echo or reverb. A library called librosa is used for manipulating the audio speed and pitch. The speed of the audio is adjusted using the librosa.effects.time_stretch function, which stretches or compresses the audio by a certain factor. If the speed parameter passed into the generate_voice function is not 1.0 (i.e., the speed of the audio needs to be changed), the audio is time-stretched by the given rate. For instance, if the speed is 2, the audio's duration will be halved, making it play twice as fast. The pitch of the audio is adjusted using the librosa.effects.pitch_shift function. This function shifts the pitch of the audio by a certain number of half-steps. If the pitch parameter passed into the generate_voice function is not 0 (i.e., the pitch of the audio needs to be changed), the pitch of the audio is shifted by the given number of half-steps. For instance, if the pitch is 2, the pitch of the audio will be increased by 2 half-steps.</p></span><span class="more-info-link">Speed and Pitch</span>
+          <div class="toggle-group">
+            <div class="toggle-item">
+                <label for="reduce-noise">Reduce Noise
+                    <div class="switch">
+                        <input type="checkbox" id="reduce-noise" name="reduce-noise">
+                        <span class="slider round"></span>
+                    </div>
+                </label>
+            </div>
+            <div class="toggle-item">
+                <label for="remove-silence">Remove Silence
+                    <div class="switch">
+                        <input type="checkbox" id="remove-silence" name="remove-silence">
+                        <span class="slider round"></span>
+                    </div>
+                </label>
+            </div>
+        </div>               
+          <span class="more-info"><p class="small"><strong>Noise Reduction (NR):</strong> Reduce background noise (not as good as an AI enhanced cleaner and often difficult to tell impact to audio given the randomness of each Bark generated speech even with same settings, it also can't remove echoing or AI hallucination). Code Ref (bark_connector.py): If value of 'reduce_noise' is True, it triggers noise reduction on the generated audio using the noisereduce library. reduce_noise takes the audio data and the sample rate as parameters and returns the audio with reduced noise. If reduce_noise is False, no noise reduction is applied, and the original audio is used.</p><p class="small"><strong>Remove Silence (RS):</strong> RRemove any extended pauses or silence (may not do much, was included for situations when generated voice contains long pauses for unknown reasons). Code Ref (bark_connector.py): If value of 'remove_silence' is True, it enables aggressive silence removal by setting the VAD (Voice Activity Detection) to level 3. The webrtcvad library is used for voice activity detection. If remove_silence is False, the VAD level is set to 0, which means no silence removal is applied. The sample rate also had to be reduced to 16000 from 24000 to get it to work with the webrtcvad library.</p></span><span class="more-info-link">Reduce Noise and Remove Silence</span>
+          <div class="button-group">
+            <button id="generate-button" type="submit">Generate</button>
+          </div>
+        </form>
+        <div class="progress-container hide">
+          <div class="progress-bar">
+              <svg viewbox="0 0 160 160" width="160" height="160">
+                  <circle cx="80" cy="80" r="70"></circle>
+                  <circle id="progress" cx="80" cy="80" r="70"></circle>
+                  <circle id="pulse" cx="80" cy="80" r="0"></circle>
+              </svg>
+              <div id="progress-text" class="progress-text">0%</div>
+          </div>              
+      </div>
+      <div id="progress-complete" class="progress-complete hide"></div>    
+      
+          <section id="audio-list" class="card-deck"></section>
+          <template id="audio-item-template">
+            <article class="card audio-item">
+                <div class="card-content">
+                            <audio class="audio-player" controls></audio>
+                            <p class="filename"></p>
+                            <p class="gen-time"></p>
+                            <p class="voice"></p>
+                            <p class="text-temp"></p>
+                            <p class="waveform-temp"></p>
+                            <p class="speed"></p>
+                            <p class="pitch"></p>
+                            <p class="reduce-noise"></p>
+                            <p class="remove-silence"></p>
+                            <p class="text-input"></p>
+                </div>
+                <div class="button-section">
+                    <button class="download-button">Download</button>
+                    <button class="delete-button">Delete</button>
+                </div>
+            </article>
+        </template>
+                       
+  </main>
+    <footer>
+      <p><a href="https://github.com/bradsec/barkwebui">Bark Web UI</a> by BRADSEC</p>
+    </footer>
+  </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.js"></script>
+    <script src="{{ url_for('static', filename='js/populate.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/barkwebui.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+  </body>
+</html>

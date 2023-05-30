@@ -1,0 +1,11 @@
+flask
+requests
+nltk
+numpy
+re
+os
+uuid
+librosa
+noisereduce
+bark
+scipy
