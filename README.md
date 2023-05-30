@@ -8,6 +8,14 @@ This application is a Python Flask-based web UI designed to facilitate the gener
 ## Sample audio
 Some have pitch and speed adjustments applied.  
 
+[sample01.webm](https://github.com/bradsec/barkwebui/assets/7948876/cc18d734-c4f0-4a20-a4b2-c45d99782926)
+
+[sample02.webm](https://github.com/bradsec/barkwebui/assets/7948876/143ae345-100a-4324-8158-8bf6e15e2be0)
+
+[sample03.webm](https://github.com/bradsec/barkwebui/assets/7948876/6212efda-a2a1-4b25-906c-e45602d6ae32)
+
+[sample04.webm](https://github.com/bradsec/barkwebui/assets/7948876/98cbe4ab-e051-4359-9b57-285275cd062c)
+
 ## Installation
 
 1. Install Bark by following the instructions from the [Bark repository](https://github.com/suno-ai/bark).
