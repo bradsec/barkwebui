@@ -149,7 +149,7 @@ function loadAudioList(callback) {
           audioItem.querySelector('.pitch').textContent = 'Pitch: ' + pitch;
           audioItem.querySelector('.reduce-noise').textContent = 'RN: ' + reduceNoise;
           audioItem.querySelector('.remove-silence').textContent = 'RS: ' + removeSilence;
-          audioItem.querySelector('.text-input').textContent = 'Text: ' + textInput;
+          audioItem.querySelector('.text-input').textContent = textInput;
 
           audioItem.querySelector('.download-button').addEventListener('click', function(event) {
             event.preventDefault();

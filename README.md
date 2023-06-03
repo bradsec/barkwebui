@@ -19,9 +19,12 @@ Some have pitch and speed adjustments applied.
 ## Installation
 
 1. Install Bark by following the instructions from the [Bark repository](https://github.com/suno-ai/bark).
-2. Clone this repo into a directory called `webui` within the `bark` installed location. 
+1a. If you have not run bark before you will need to download the models, running a test will download and cache the required models (note models vary in size including one over 5GB in size).  
+```terminal
+python -m bark --text "Let's get this party started!" --output_filename "party.wav"
+```
+2. Once bark is running clone this repo into a directory called `webui` within the `bark` installation location. 
 ```Terminal
-# Change into existing bark install directory
 cd bark
 git clone https://github.com/bradsec/barkwebui webui
 ```
