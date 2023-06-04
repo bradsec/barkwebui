@@ -8,13 +8,13 @@ This application is a Python Flask-based web UI designed to facilitate the gener
 ## Sample audio
 Some have pitch and speed adjustments applied.  
 
-https://github.com/bradsec/barkwebui/assets/7948876/477d6410-e9df-4809-ac74-f22647292a36
+![Sample Audio 01](https://github.com/bradsec/barkwebui/assets/7948876/477d6410-e9df-4809-ac74-f22647292a36)
 
-https://github.com/bradsec/barkwebui/assets/7948876/cf09b7b6-133e-435f-8b99-dfae8d5278da
+![Sample Audio 02](https://github.com/bradsec/barkwebui/assets/7948876/cf09b7b6-133e-435f-8b99-dfae8d5278da)
 
-https://github.com/bradsec/barkwebui/assets/7948876/287472ce-896f-4412-b096-e78fc738f6dd
+![Sample Audio 03](https://github.com/bradsec/barkwebui/assets/7948876/287472ce-896f-4412-b096-e78fc738f6dd)
 
-https://github.com/bradsec/barkwebui/assets/7948876/04fbd340-7605-41b8-8c7b-abfbb923259a
+![Sample Audio 04](https://github.com/bradsec/barkwebui/assets/7948876/04fbd340-7605-41b8-8c7b-abfbb923259a)
 
 ## Installation
 
