@@ -8,13 +8,13 @@ This application is a Python Flask-based web UI designed to facilitate the gener
 ## Sample audio
 Some have pitch and speed adjustments applied.  
 
-[sample_speaker_announcer_waveform.webm](https://github.com/bradsec/barkwebui/assets/7948876/c8a4a40d-a742-4512-910f-a605ae0955ad)
+https://github.com/bradsec/barkwebui/assets/7948876/477d6410-e9df-4809-ac74-f22647292a36
 
-[sample_lower_pitch_waveform.webm](https://github.com/bradsec/barkwebui/assets/7948876/60dad242-eae1-4a41-8971-a5fb07a87e4c)
+https://github.com/bradsec/barkwebui/assets/7948876/cf09b7b6-133e-435f-8b99-dfae8d5278da
 
-[sample_speaker_v2_03_waveform.webm](https://github.com/bradsec/barkwebui/assets/7948876/e7fc7719-6d5f-4a6c-a83b-08234b7eefa7)
+https://github.com/bradsec/barkwebui/assets/7948876/287472ce-896f-4412-b096-e78fc738f6dd
 
-[sample_speaker_v2_06_waveform.webm](https://github.com/bradsec/barkwebui/assets/7948876/bd2d6609-36f8-4233-8217-c73cb5a9ae0a)
+https://github.com/bradsec/barkwebui/assets/7948876/04fbd340-7605-41b8-8c7b-abfbb923259a
 
 ## Installation
 
